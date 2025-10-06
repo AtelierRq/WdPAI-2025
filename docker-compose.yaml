@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: docker/nginx/Dockerfile
     ports:
-      - "8000:80" #pierwszy lokalnie, drugi port wewnątrz kontenera
+      - "8080:80" #pierwszy lokalnie, drugi port wewnątrz kontenera
     volumes:
       - .:/app/
     links:
