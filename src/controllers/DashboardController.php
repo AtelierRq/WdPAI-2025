@@ -1,9 +1,9 @@
 <?php
 
 require_once 'src/controllers/AppController.php';
-class SecurityController extends AppController {
+class DashboardController extends AppController {
 
-    public function index(?int $id) {
+    public function index(?int $id = null) {
 
         $cards = [
         [

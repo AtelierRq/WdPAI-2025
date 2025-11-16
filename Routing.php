@@ -9,7 +9,7 @@ require_once 'src/controllers/DashboardController.php';
 
 class Routing {
 
-    //rozbudowywanie za pomocą dodwania kolejnych routingow
+    //rozbudowywanie za pomocą dodawania kolejnych routingow
     public static $routes = [
         "login" => [
             "controller" => "SecurityController",

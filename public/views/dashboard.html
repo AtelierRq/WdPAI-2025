@@ -27,7 +27,7 @@
                 <?php foreach ($cards as $key=>$value): ?>
                 <li>
                     <?php echo $value['title']; ?>
-                    <img src="<? $value['imageUrlPath']; ?>">
+                    <img src="<?= $value['imageUrlPath']; ?>">
                 </li>
             </ul>
             <?php endforeach; ?>
