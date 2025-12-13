@@ -19,22 +19,26 @@ class Routing {
     // trasy z regexem (więc zmieniona tablica na nową, inną)
     //rozbudowywanie za pomocą dodawania kolejnych routingow
     private array $routes = [
-    [
-        'pattern' => '#^login$#',
-        'controller' => 'SecurityController',
-        'action' => 'login'
-    ],
-    [
-        'pattern' => '#^register$#',
-        'controller' => 'SecurityController',
-        'action' => 'register'
-    ],
-    [
-        'pattern' => '#^dashboard(?:/(\d+))?$#',
-        'controller' => 'DashboardController',
-        'action' => 'index'
-    ],
-];
+        [
+            'pattern' => '#^login$#',
+            'controller' => 'SecurityController',
+            'action' => 'login'
+        ],
+        [
+            'pattern' => '#^register$#',
+            'controller' => 'SecurityController',
+            'action' => 'register'
+        ],
+        [
+            'pattern' => '#^dashboard(?:/(\d+))?$#',
+            'controller' => 'DashboardController',
+            'action' => 'index'
+        ],
+            "search-cards" => [
+            "controller" => "DashboardController",
+            "action" => "search"
+        ]
+    ];
 
 
     //prywatne, aby nie mozna bylo utworzyc z zewnątrz
