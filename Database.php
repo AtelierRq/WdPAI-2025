@@ -1,6 +1,6 @@
 <?php
 
-require_once "config.php"; //trzeba bedzie zastąpić ten plik config.php na na odczyt zmiennych z .enf (nie jest to konieczzne do zrobienia)
+require_once "config.php"; //trzeba bedzie zastąpić ten plik config.php na na odczyt zmiennych z .enf (nie jest to konieczzne do zrobienia)  -- zmienione (ale trzeba to ręcznie przełączyć, bo narazie to nie działa, dopiero później to)
 
 class Database {
     private $username;
@@ -10,10 +10,10 @@ class Database {
 
     public function __construct()
     {
-        $this->username = USERNAME;
-        $this->password = PASSWORD;
-        $this->host = HOST;
-        $this->database = DATABASE;
+        $this->username = USERNAME;     //$this->username = getenv("DB_USERNAME");
+        $this->password = PASSWORD;     //$this->password = getenv("DB_PASSWORD");
+        $this->host = HOST;             //$this->host     = getenv("DB_HOST");
+        $this->database = DATABASE;     //$this->database = getenv("DB_NAME");
     }
 
     public function connect()
@@ -31,7 +31,8 @@ class Database {
             return $conn;
         }
         catch(PDOException $e) {
-            die("Connection failed: " . $e->getMessage()); //zamiast "die" zwrócić jaką strone z błędem (stronę html, po prostu gdzies przekierować), bo inczaej ten wyjątek wyrzuca serwer xD
+            header("Location: /404");  //zamiast "die" przekierowuje na stronę błędu html (404), bo inczaej ten wyjątek wywala serwer xD
+            exit; 
         
         }
     }

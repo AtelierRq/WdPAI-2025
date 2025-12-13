@@ -1,27 +1,15 @@
 <?php
 
 require_once 'src/controllers/AppController.php';
+require_once __DIR__.'/../../Repository/UserRepository.php';
+
 class SecurityController extends AppController {
 
-    //przykładowa statyczna baza danych
-        private static array $users = [
-        [
-            'email' => 'anna@example.com',
-            'password' => '$2a$12$ZdCBDHmtSppRoKqVGHKKnemQt.eTV8tmSJjm1pgLd.yNXgyz3Dk0K', // test123
-            'first_name' => 'Anna'
-        ],
-        [
-            'email' => 'bartek@example.com',
-            'password' => '$2a$12$.DXJfYSynm1c4qhyKxrBbOO4d0TMa/ttma/aLuL.cql.O2g3HkC.u', // haslo456
-            'first_name' => 'Bartek'
-        ],
-        [
-            'email' => 'celina@example.com',
-            'password' => '$2a$12$NTs.SGMT2UZhKCwUUud58uUfe/gFuCYKdUxEi6GpWUVunCWlrfmA.', // qwerty
-            'first_name' => 'Celina'
-        ],
-    ];
-
+    private $userRepository;
+    
+    public function __construct() {
+        $this->userRepository = new UserRepository();
+    }
 
     public function login() {
         //TODO get data from login form
@@ -45,7 +33,8 @@ class SecurityController extends AppController {
             if (empty($email) || empty($password)) {
             return $this->render('login', ['messages' => 'Fill all fields']);
             }   
-
+            
+            /*
             $userRow = null;
             foreach (self::$users as $u) {
             if (strcasecmp($u['email'], $email) === 0) {
@@ -53,6 +42,9 @@ class SecurityController extends AppController {
                 break;
                 }
             }
+            */
+
+            $userRow = $this->userRepository->getUsersByEmail($email);
 
             if (!$userRow) {
             return $this->render('login', ['messages' => 'User not found']);
@@ -63,6 +55,7 @@ class SecurityController extends AppController {
             }
 
             //return $this->render("dashboard", ['cards' => []]);
+            //TODO create user session, token or smth (nie robić, zrobimy na zajęciach później)
  
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/dashboard");
@@ -89,34 +82,43 @@ class SecurityController extends AppController {
 
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
-        $firstName = $_POST['firstname'] ?? '';
-        $lastName = $_POST['lastname'] ?? '';
+        $password2 = $_POST['password2'] ?? '';
+        $firstName = $_POST['firstName'] ?? '';
+        $lastName = $_POST['lastName'] ?? '';
 
         if (empty($email) || empty($password) || empty($firstName) || empty($lastName)) {
             return $this->render('register', ['messages' => 'Fill all fields']);
         }
 
+        if($password !== $password2) {
+            return $this->render('register', ['messages' => 'Hasła są różne']);
+        }
+
 	    // TODO this will be checked in database
+        /*
         foreach (self::$users as $u) {
             if (strcasecmp($u['email'], $email) === 0) {
                 return $this->render('register', ['messages' => 'Email is taken']);
             }
         }
+        */
 
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        if ($this->userRepository->getUsersByEmail($email)) {
+        return $this->render('register', ['messages' => 'Email is taken']);
+        }
 
-        self::$users[] = [
-            'email' => $email,
-            'password' => $hashedPassword,
-            'first_name' => $firstName,
-            'lastName' => $lastName
-        ];
+        // TODO check if user with this email already exists
+
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT); //haszowanie hasła - hasz zaczyna się od $2y$
+
+        $this->userRepository->createUser(
+            $email, $hashedPassword, $firstName, $lastName
+        );
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");
-        
 
-        return $this->render("register");
+        return $this->render("login", ['messages' => 'User registered successfully, please login']);
     }
 
 
