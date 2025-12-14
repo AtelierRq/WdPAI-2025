@@ -34,9 +34,10 @@ class Routing {
             'controller' => 'DashboardController',
             'action' => 'index'
         ],
-            "search-cards" => [
-            "controller" => "DashboardController",
-            "action" => "search"
+        [
+            'pattern' => '#^search-cards$#',
+            'controller' => 'DashboardController',
+            'action' => 'search'
         ]
     ];
 

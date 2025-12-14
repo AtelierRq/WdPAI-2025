@@ -54,9 +54,29 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => 'Wrong password']);
             }
 
+            // zweryfikowanie emaila
+            filter_var($email, FILTER_VALIDATE_EMAIL);
+            error_log("Login failed for email: {$email}");
+
             //return $this->render("dashboard", ['cards' => []]);
             //TODO create user session, token or smth (nie robić, zrobimy na zajęciach później)
  
+            session_set_cookie_params([
+            'httponly' => true,
+            'secure'   => false,   // true jeśli HTTPS
+            'samesite' => 'Strict'
+            ]);
+
+            session_start();
+
+            session_regenerate_id(true); // 🔐 B3 – ochrona przed session fixation
+
+            $_SESSION['user'] = [
+            'email' => $userRow['email'],
+            'first_name' => $userRow['first_name']
+            ];
+
+
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/dashboard");
 
@@ -69,7 +89,7 @@ class SecurityController extends AppController {
         }
 
 
-        return $this->render('login', ["message" => "Hasło bledne"]);  //tablica asocjacyjna
+        return $this->render('login', ["message" => "Wrond Password"]);  //tablica asocjacyjna
     }
 
     public function register() {
