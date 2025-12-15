@@ -15,6 +15,20 @@ class CardsRepository extends Repository {
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $cards = [];
+
+        foreach ($rows as $row) {
+            $cards[] = new Card(
+            $row['title'],
+            $row['description'],
+            $row['image'],
+            (int)$row['id']
+            );
+        }
+
+        return $cards;
     }
 }

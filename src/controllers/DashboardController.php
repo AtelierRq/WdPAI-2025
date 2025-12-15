@@ -91,6 +91,13 @@ class DashboardController extends AppController {
 
         http_response_code(200);
         $cards = $this->cardsRepository->getCardsByTitle($decoded['search']);
+
+        $result = array_map(
+            fn(Card $card) => new CardDTO($card),
+            $cards
+        );
+
         echo json_encode($cards);
+        exit;
     }
 }
