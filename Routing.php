@@ -2,6 +2,7 @@
 
 require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/DashboardController.php';
+require_once 'src/middleware/checkRequestAllowed.php';
 
 // TODO Controller -> singleton
 // URL: /dashboard/5432
@@ -83,6 +84,8 @@ class Routing {
 
                 $controller = $router->getController($route['controller']);
                 $action = $route['action'];
+
+                checkRequestAllowed($controller, $action);
 
                 // wywołanie z parametrami
                 call_user_func_array([$controller, $action], $matches);

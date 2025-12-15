@@ -2,6 +2,7 @@
 
 require_once 'src/controllers/AppController.php';
 require_once __DIR__.'/../../Repository/UserRepository.php';
+require_once __DIR__ . '/../attribute/AllowedMethods.php';
 
 class SecurityController extends AppController {
 
@@ -11,6 +12,8 @@ class SecurityController extends AppController {
         $this->userRepository = new UserRepository();
     }
 
+    
+    #[AllowedMethods(['GET', 'POST'])]
     public function login() {
         //TODO get data from login form
         // check if users is in Database
