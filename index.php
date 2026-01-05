@@ -1,6 +1,5 @@
 <?php
 
-#echo "<h1> Hi Students! 😎</h1>";
 
 require_once 'Routing.php';
 
