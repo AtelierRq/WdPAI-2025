@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index(): void
     {
-        echo 'Strona główna – routing działa';
+        $this->view('home/index');
     }
 }

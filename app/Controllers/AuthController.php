@@ -6,13 +6,16 @@ use App\Core\Controller;
 
 class AuthController extends Controller
 {
+    
     public function login(): void
     {
-        echo 'Login';
+    $this->view('auth/login');
     }
 
     public function register(): void
     {
-        echo 'Register';
+    $this->view('auth/register');
     }
+    
+
 }

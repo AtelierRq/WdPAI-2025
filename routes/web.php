@@ -11,3 +11,5 @@ $router->get('/', [HomeController::class, 'index']);
 $router->get('/login', [AuthController::class, 'login']);
 $router->get('/register', [AuthController::class, 'register']);
 $router->get('/admin', [AdminController::class, 'dashboard']);
+
+
