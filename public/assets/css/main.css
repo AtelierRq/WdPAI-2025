@@ -1,10 +1,16 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: system-ui, sans-serif;
     background: #fafafa;
     color: #222;
 }
 
+/* LAYOUT */
 .container {
     max-width: 1200px;
     margin: auto;
@@ -13,25 +19,128 @@ body {
 
 .site-header {
     background: #fff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 700;
+    text-decoration: none;
+    color: #222;
+    font-size: 1.2rem;
+}
+
+/* NAV */
+/* ===== NAV MOBILE FIRST ===== */
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: block;
+}
+
+.main-nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    border-top: 1px solid #eee;
 }
 
 .main-nav a {
-    margin-right: 1rem;
+    padding: 1rem;
     text-decoration: none;
-    color: #333;
+    color: #222;
+    border-bottom: 1px solid #f0f0f0;
 }
 
+.main-nav.active {
+    display: flex;
+}
+
+/* MOBILE MENU */
+.main-nav {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    border-top: 1px solid #eee;
+}
+
+.main-nav a {
+    padding: 1rem;
+    text-decoration: none;
+    color: #222;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.main-nav.active {
+    display: flex;
+}
+
+/* BUTTON */
+.btn-nav {
+    background: #f57c00;
+    color: #fff !important;
+    border-radius: 4px;
+    margin: 0.5rem;
+    text-align: center;
+}
+
+/* HERO */
 .hero {
     padding: 4rem 1rem;
     text-align: center;
 }
 
-.btn-primary {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: #f57c00;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
+/* FOOTER */
+.site-footer {
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+
+    .menu-toggle {
+        display: none; /* hamburger znika */
+    }
+
+    .main-nav {
+        display: flex !important; /* menu zawsze widoczne */
+        position: static;
+        flex-direction: row;
+        width: auto;
+        background: none;
+        border: none;
+    }
+
+    .main-nav a {
+        border: none;
+        padding: 0 1rem;
+    }
+
+    .btn-nav {
+        margin-left: 1rem;
+        padding: 0.5rem 1rem;
+    }
 }

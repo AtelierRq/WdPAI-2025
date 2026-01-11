@@ -6,19 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/assets/css/main.css">
+    <script defer src="/assets/js/menu.js"></script>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="container">
-        <a href="/" class="logo">Dębowy Jar</a>
+    <div class="container header-inner">
+
+        <a href="/" class="logo">
+            Dębowy Jar
+        </a>
+
+        <button class="menu-toggle" aria-label="Menu">
+            ☰
+        </button>
 
         <nav class="main-nav">
             <a href="/">O nas</a>
-            <a href="/booking">Rezerwuj</a>
+            <a href="/booking" class="btn-nav">Rezerwuj</a>
             <a href="/login">Zaloguj</a>
         </nav>
+
     </div>
 </header>
 
-<main class="site-content"></main>
+<main class="site-content">

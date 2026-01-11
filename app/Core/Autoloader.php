@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-// automatyczne załadowywanie ścieżek
+// automatyczne załadowywanie ścieżek, żeby nie używać ciągla require_once __DIR__
 class Autoloader
 {
     public static function register(): void
