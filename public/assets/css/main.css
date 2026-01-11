@@ -38,8 +38,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* NAV */
-/* ===== NAV MOBILE FIRST ===== */
+/* NAVBAR */
 
 .menu-toggle {
     background: none;
@@ -71,7 +70,7 @@ body {
     display: flex;
 }
 
-/* MOBILE MENU */
+/* MOBILE NAVBAR MENU */
 .main-nav {
     position: absolute;
     top: 64px;
@@ -339,4 +338,11 @@ body {
     .reservation-actions {
         flex-direction: column;
     }
+}
+
+
+/* APPROVED RESERVATIONS */
+
+.reservation-card.approved {
+    border-left: 4px solid #4caf50;
 }

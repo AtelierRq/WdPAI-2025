@@ -15,4 +15,9 @@ class AdminController extends Controller
     {
         $this->view('admin/pending');
     }
+
+    public function approved(): void
+    {
+    $this->view('admin/approved');
+    }
 }
