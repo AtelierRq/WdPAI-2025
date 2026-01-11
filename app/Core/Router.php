@@ -6,12 +6,12 @@ class Router
 {
     private array $routes = [];
 
-    public function get(string $uri, array $action): void
+    public function get(string $uri, callable|array $action): void
     {
         $this->routes['GET'][$uri] = $action;
     }
 
-    public function post(string $uri, array $action): void
+    public function post(string $uri, callable|array $action): void
     {
         $this->routes['POST'][$uri] = $action;
     }
@@ -25,7 +25,16 @@ class Router
             return;
         }
 
-        [$controller, $methodName] = $this->routes[$method][$uri];
+        $action = $this->routes[$method][$uri];
+
+        // Closure
+        if (is_callable($action)) {
+            $action();
+            return;
+        }
+
+        // [Controller::class, 'method']
+        [$controller, $methodName] = $action;
 
         $controllerInstance = new $controller();
         $controllerInstance->$methodName();

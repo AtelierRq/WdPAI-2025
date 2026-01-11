@@ -6,14 +6,38 @@ use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 use App\Controllers\BookingController;
 
+use App\Middleware\AuthMiddleware;
+use App\Middleware\AdminMiddleware;
+
 /** @var Router $this */
 
 $router->get('/', [HomeController::class, 'index']);
+
 $router->get('/login', [AuthController::class, 'login']);
+$router->post('/login', [AuthController::class, 'login']);
+
+$router->get('/logout', [AuthController::class, 'logout']);
+
 $router->get('/register', [AuthController::class, 'register']);
-$router->get('/admin', [AdminController::class, 'dashboard']);
+
 $router->get('/booking', [BookingController::class, 'form']);
 $router->get('/booking/success', [BookingController::class, 'success']);
+
+$router->get('/admin', [AdminController::class, 'dashboard']);
 $router->get('/admin/pending', [AdminController::class, 'pending']);
 $router->get('/admin/approved', [AdminController::class, 'approved']);
 
+
+$router->get('/admin/pending', function () {
+    AuthMiddleware::handle();
+    AdminMiddleware::handle();
+    (new App\Controllers\AdminController())->pending();
+});
+
+$router->get('/admin/approved', function () {
+    AuthMiddleware::handle();
+    AdminMiddleware::handle();
+    (new App\Controllers\AdminController())->approved();
+});
+
+$router->get('/logout', [AuthController::class, 'logout']);
