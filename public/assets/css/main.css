@@ -144,3 +144,65 @@ body {
         padding: 0.5rem 1rem;
     }
 }
+
+
+/* BOOKING */
+.booking {
+    padding: 3rem 0;
+}
+
+.booking-container {
+    max-width: 600px;
+}
+
+.booking-subtitle {
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.booking-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* MOBILE FIX */
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
