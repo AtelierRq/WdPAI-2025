@@ -10,4 +10,9 @@ class AdminController extends Controller
     {
         echo 'Panel administratora';
     }
+
+    public function pending(): void
+    {
+        $this->view('admin/pending');
+    }
 }
