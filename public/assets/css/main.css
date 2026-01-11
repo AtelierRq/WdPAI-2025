@@ -206,3 +206,60 @@ body {
         flex-direction: column;
     }
 }
+
+
+/* BOOKING SUCCESS */
+
+.booking-success {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.success-container {
+    max-width: 600px;
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    background: #4caf50;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-text {
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.success-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.success-summary {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.success-summary li {
+    margin-bottom: 0.5rem;
+}
+
+.success-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-left: 4px solid #f57c00;
+    font-size: 0.9rem;
+}

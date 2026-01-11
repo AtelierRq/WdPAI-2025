@@ -10,4 +10,9 @@ class BookingController extends Controller
     {
         $this->view('booking/form');
     }
+
+    public function success(): void
+    {
+    $this->view('booking/success');
+    }
 }
