@@ -6,51 +6,100 @@
             Wypełnij formularz, aby zarezerwować pobyt w Osadzie Dębowy Jar.
         </p>
 
-        <form class="booking-form">
+        <form class="booking-form" id="bookingForm" novalidate>
 
-            <div class="form-group">
-                <label>Data przyjazdu</label>
-                <input type="date">
-            </div>
-
-            <div class="form-group">
-                <label>Data wyjazdu</label>
-                <input type="date">
-            </div>
-
+            <!-- DATY -->
             <div class="form-row">
                 <div class="form-group">
-                    <label>Liczba dorosłych</label>
-                    <input type="number" min="1" value="2">
+                    <label>Data przyjazdu (zameldowanie po 14:00)</label>
+                    <input type="date" id="dateFrom" required>
                 </div>
-
                 <div class="form-group">
-                    <label>Liczba dzieci</label>
-                    <input type="number" min="0" value="0">
+                    <label>Data wyjazdu (wymeldowanie do 11:00)</label>
+                    <input type="date" id="dateTo" required>
                 </div>
             </div>
 
+            <!-- Imie i nazwisko -->
             <div class="form-group">
                 <label>Imię i nazwisko</label>
                 <input type="text" placeholder="Jan Kowalski">
             </div>
 
+            <!-- email -->
             <div class="form-group">
                 <label>Adres e-mail</label>
                 <input type="email" placeholder="jan.kowalski@example.com">
             </div>
 
+            <!-- tel -->
             <div class="form-group">
                 <label>Numer telefonu</label>
                 <input type="tel" placeholder="+48 123 456 789">
             </div>
 
+            <!-- OSOBY -->
+
             <div class="form-group">
-                <label>Dodatkowe uwagi</label>
-                <textarea placeholder="Np. łóżeczko dla dziecka"></textarea>
+                <label>Dorośli (od 11 lat)</label>
+                <input type="number" id="adults" min="1" value="1">
             </div>
 
-            <button type="submit" class="btn-primary">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Dzieci (1–10 lat)</label>
+                    <input type="number" id="children" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label>Niemowlęta (do 12 miesięcy)</label>
+                <input type="number" id="infants" min="0" value="0">
+                </div>
+            </div>
+
+
+            <!-- POKÓJ -->
+
+            <h3>Pokoje</h3>
+
+            <div id="roomsContainer">
+                <div class="room-row">
+                    <select class="room-select">
+                        <option value="">-- wybierz pokój --</option>
+                        <option value="Polana">Polana - 1 łóżko podwójne, prywatna łazienka</option>
+                        <option value="Homola">Homola - 1 łóżko podwójne, 1 łóżko pojedyncze, prywatna łazienka</option>
+                        <option value="Kopa">Kopa - 2 łóżka pojedyncze, dzielona łazienka</option>
+                        <option value="Skałka">Skałka - 4 łóżka pojedyncze, dzielona łazienka</option>
+                    </select>
+                    <button type="button" class="remove-room" disabled>✕</button>
+                </div>
+            </div>
+
+            <button type="button" id="addRoomBtn">+ Dodaj kolejny pokój</button>
+
+            <!-- ŚNIADANIE -->
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="breakfast">
+                    Śniadanie (40 zł / osoba / doba)
+                </label>
+            </div>
+
+            <!-- UWAGI -->
+            <div class="form-group">
+                <label>Dodatkowe uwagi</label>
+                <textarea placeholder="Np. łóżeczko dla niemowlęcia"></textarea>
+            </div>
+
+            <!-- BŁĘDY -->
+            <p id="priceError" class="price-error"></p>
+
+            <!-- CENA -->
+            <div class="price-box">
+                <strong>Łączna cena:</strong>
+                <span id="totalPrice">0 zł</span>
+            </div>
+
+            <button type="submit" class="btn-primary" id="submitBtn" disabled>
                 Zarezerwuj
             </button>
 
@@ -58,3 +107,6 @@
 
     </div>
 </section>
+
+<script src="/assets/js/booking-price.js"></script>
+

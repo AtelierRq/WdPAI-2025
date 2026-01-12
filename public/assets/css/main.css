@@ -346,3 +346,51 @@ body {
 .reservation-card.approved {
     border-left: 4px solid #4caf50;
 }
+
+.price-box {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-left: 4px solid #f57c00;
+    font-size: 1.1rem;
+}
+
+#addRoomBtn {
+    margin-bottom: 1.5rem;
+}
+
+.price-error {
+    color: #e53935;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.room-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.room-select {
+    flex: 1;
+}
+
+.remove-room {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-room:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
