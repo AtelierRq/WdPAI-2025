@@ -39,14 +39,14 @@ const childPrice = 50;
 const infantPrice = 30;
 const breakfastPrice = 40;
 
-// --- INIT ---
+// INIT
 refreshAllSelects();
 bindGlobalListeners();
+updateAddRoomButtonState();
 
-// --- EVENTY ---
+// EVENTY
 addRoomBtn.addEventListener('click', () => {
     if (getRoomRows().length >= MAX_ROOMS) return;
-
     const row = createRoomRow();
     roomsContainer.appendChild(row);
     refreshAllSelects();
@@ -70,15 +70,15 @@ roomsContainer.addEventListener('click', e => {
 
 function bindGlobalListeners() {
     [dateFrom, dateTo, adults, children, infants, breakfast]
-    .forEach(el =>
-        el.addEventListener('change', () => {
-            calculate();
-            updateAddRoomButtonState();
-        })
-    );
+        .forEach(el =>
+            el.addEventListener('change', () => {
+                calculate();
+                updateAddRoomButtonState();
+            })
+        );
 }
 
-// --- ROOM ROW ---
+// ROOM ROW
 function createRoomRow() {
     const div = document.createElement('div');
     div.className = 'room-row';
@@ -105,7 +105,7 @@ function getSelectedRooms() {
         .filter(Boolean);
 }
 
-// --- SELECT OPTIONS ---
+// SELECTY
 function refreshAllSelects() {
     const selected = getSelectedRooms();
     const rows = getRoomRows();
@@ -114,11 +114,10 @@ function refreshAllSelects() {
         const select = row.querySelector('.room-select');
         const removeBtn = row.querySelector('.remove-room');
 
-        removeBtn.disabled = index === 0; // pierwszy pokój nieusuwalny
+        removeBtn.disabled = index === 0;
 
         const current = select.value;
         select.innerHTML = '';
-
         addOption(select, '', '-- wybierz pokój --');
 
         Object.keys(roomsConfig).forEach(room => {
@@ -140,7 +139,7 @@ function addOption(select, value, label) {
     select.appendChild(opt);
 }
 
-// --- CENA ---
+// CENA
 function calculate() {
     errorEl.innerText = '';
     submitBtn.disabled = true;
@@ -148,6 +147,7 @@ function calculate() {
     const selectedRooms = getSelectedRooms();
     if (!selectedRooms.length) {
         updatePrice(0);
+        syncFormData();
         return;
     }
 
@@ -155,6 +155,7 @@ function calculate() {
     const to = new Date(dateTo.value);
     if (isNaN(from) || isNaN(to) || from >= to) {
         updatePrice(0);
+        syncFormData();
         return;
     }
 
@@ -165,13 +166,15 @@ function calculate() {
 
     const peopleUsingBeds = adultsCount + childrenCount;
     const totalBeds = selectedRooms.reduce(
-        (sum, r) => sum + roomsConfig[r].beds, 0
+        (sum, r) => sum + roomsConfig[r].beds,
+        0
     );
 
     if (peopleUsingBeds > totalBeds) {
         errorEl.innerText =
             'Liczba gości przekracza liczbę miejsc w wybranych pokojach. Dodaj lub wybierz inny pokój.';
         updatePrice(0);
+        syncFormData();
         return;
     }
 
@@ -181,7 +184,11 @@ function calculate() {
     selectedRooms.forEach(room => {
         const beds = roomsConfig[room].beds;
         const used = Math.min(beds, remaining);
-        roomCost += roomsConfig[room].prices[used] * days;
+
+        if (used > 0) {
+            roomCost += roomsConfig[room].prices[used] * days;
+        }
+
         remaining -= used;
     });
 
@@ -199,7 +206,8 @@ function calculate() {
     if (days > 3) total *= 0.95;
 
     updatePrice(Math.round(total));
-    submitBtn.disabled = false;
+    submitBtn.disabled = !isFormValid();
+    syncFormData();
 }
 
 function updatePrice(val) {
@@ -207,10 +215,29 @@ function updatePrice(val) {
 }
 
 function updateAddRoomButtonState() {
-    const peopleUsingBeds =
-        +adults.value + +children.value;
-
+    const peopleUsingBeds = +adults.value + +children.value;
     addRoomBtn.disabled = peopleUsingBeds < 3;
 }
 
-updateAddRoomButtonState();
+function isFormValid() {
+    if (!dateFrom.value || !dateTo.value) return false;
+    if (!document.getElementById('fullName').value.trim()) return false;
+    if (!document.getElementById('email').value.trim()) return false;
+    if (!document.getElementById('phone').value.trim()) return false;
+    if (!getSelectedRooms().length) return false;
+
+    const peopleUsingBeds = +adults.value + +children.value;
+    const totalBeds = getSelectedRooms()
+        .reduce((sum, r) => sum + roomsConfig[r].beds, 0);
+
+    if (peopleUsingBeds > totalBeds) return false;
+
+    return true;
+}
+
+function syncFormData() {
+    document.getElementById('roomsInput').value =
+        getSelectedRooms().join(',');
+    document.getElementById('priceInput').value =
+        totalPriceEl.innerText.replace(' zł', '');
+}

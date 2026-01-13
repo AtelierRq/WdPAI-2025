@@ -41,3 +41,5 @@ $router->get('/admin/approved', function () {
 });
 
 $router->get('/logout', [AuthController::class, 'logout']);
+
+$router->post('/booking', [BookingController::class, 'store']);
