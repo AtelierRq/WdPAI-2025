@@ -21,6 +21,13 @@ const roomsConfig = {
     }
 };
 
+const roomIds = {
+    Polana: 1,
+    Homola: 2,
+    Kopa: 3,
+    Skałka: 4
+};
+
 const MAX_ROOMS = 4;
 
 const roomsContainer = document.getElementById('roomsContainer');
@@ -236,8 +243,6 @@ function isFormValid() {
 }
 
 function syncFormData() {
-    document.getElementById('roomsInput').value =
-        getSelectedRooms().join(',');
-    document.getElementById('priceInput').value =
-        totalPriceEl.innerText.replace(' zł', '');
+    document.getElementById('roomsInput').value = getSelectedRooms().map(roomKey => roomIds[roomKey]).join(',');
+    document.getElementById('priceInput').value = totalPriceEl.innerText.replace(' zł', '');
 }

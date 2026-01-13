@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Repositories\BookingRepository;
 
 class BookingController extends Controller
 {
@@ -18,24 +19,22 @@ class BookingController extends Controller
 
     public function store(): void
     {
-        
-        // 1. Pobranie danych
         $data = [
-            'fullName'  => trim($_POST['fullName'] ?? ''),
-            'email'     => trim($_POST['email'] ?? ''),
-            'phone'     => trim($_POST['phone'] ?? ''),
-            'dateFrom'  => $_POST['dateFrom'] ?? '',
-            'dateTo'    => $_POST['dateTo'] ?? '',
-            'adults'    => (int) ($_POST['adults'] ?? 0),
-            'children'  => (int) ($_POST['children'] ?? 0),
-            'infants'   => (int) ($_POST['infants'] ?? 0),
-            'rooms'     => $_POST['rooms'] ?? [],
-            'breakfast' => isset($_POST['breakfast']),
-            'notes'     => trim($_POST['notes'] ?? ''),
-            'price'     => (int) ($_POST['price'] ?? 0),
+            'user_id'  => null, // na razie gość
+            'fullName' => trim($_POST['fullName'] ?? ''),
+            'email'    => trim($_POST['email'] ?? ''),
+            'phone'    => trim($_POST['phone'] ?? ''),
+            'dateFrom' => $_POST['dateFrom'] ?? '',
+            'dateTo'   => $_POST['dateTo'] ?? '',
+            'adults'   => (int) ($_POST['adults'] ?? 0),
+            'children' => (int) ($_POST['children'] ?? 0),
+            'infants'  => (int) ($_POST['infants'] ?? 0),
+            'rooms'    => array_map('intval', explode(',', $_POST['rooms'] ?? '')),
+            'breakfast' => isset($_POST['breakfast']) ? 1 : 0,
+            'notes'    => trim($_POST['notes'] ?? ''),
+            'price'    => (int) ($_POST['price'] ?? 0),
         ];
 
-        // 2. Walidacja backendowa (minimum)
         if (
             !$data['fullName'] ||
             !$data['email'] ||
@@ -49,10 +48,9 @@ class BookingController extends Controller
             return;
         }
 
-        // 3. Tymczasowy zapis do sesji (mock DB)
-        $_SESSION['bookings'][] = $data;
+        $repo = new BookingRepository();
+        $repo->create($data);
 
-        // 4. Redirect
         header('Location: /booking/success');
         exit;
     }

@@ -20,6 +20,8 @@ services:
     container_name: debowyjar_php
     volumes:
       - ./:/var/www
+    env_file:
+    - .env
     networks:
       - debowyjar
 
