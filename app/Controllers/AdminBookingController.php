@@ -52,19 +52,35 @@ class AdminBookingController extends Controller
         ]);
     }
 
-    public function accept(int $id): void
+    public function accept(): void
     {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id = (int)($data['id'] ?? 0);
+
+        if (!$id) {
+            http_response_code(400);
+            echo json_encode(['success' => false]);
+            return;
+        }
+
         $this->bookingRepository->updateStatus($id, 'accepted');
 
-        header('Location: /admin/bookings/pending');
-        exit;
+        echo json_encode(['success' => true]);
     }
-
-    public function reject(int $id): void
+    
+    public function reject(): void
     {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id = (int)($data['id'] ?? 0);
+
+        if (!$id) {
+            http_response_code(400);
+            echo json_encode(['success' => false]);
+            return;
+        }
+
         $this->bookingRepository->updateStatus($id, 'rejected');
 
-        header('Location: /admin/bookings/pending');
-        exit;
+        echo json_encode(['success' => true]);
     }
 }

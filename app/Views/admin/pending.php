@@ -6,7 +6,7 @@
             <p>Brak oczekujących rezerwacji.</p>
         <?php else: ?>
             <?php foreach ($bookings as $booking): ?>
-                <div class="booking-card">
+                <div class="booking-card" data-id="<?= $booking['id'] ?>">
                     <div class="booking-header">
                         <strong><?= htmlspecialchars($booking['full_name']) ?></strong>
                         <span><?= htmlspecialchars($booking['email']) ?></span>
@@ -49,16 +49,15 @@
                     </div>
 
                     <div class="booking-actions">
-                        <form method="post" action="/admin/bookings/<?= $booking['id'] ?>/accept">
-                            <button class="btn-accept">Akceptuj</button>
-                        </form>
+                        <button class="btn-accept" data-action="accept">Akceptuj</button>
 
-                        <form method="post" action="/admin/bookings/<?= $booking['id'] ?>/reject">
-                            <button class="btn-reject">Odrzuć</button>
-                        </form>
+                        <button class="btn-reject" data-action="reject">Odrzuć</button>
                     </div>
+
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
 </section>
+
+<script src="/assets/js/admin-bookings.js"></script>

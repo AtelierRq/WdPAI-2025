@@ -5,6 +5,7 @@ use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 use App\Controllers\BookingController;
+use App\Controllers\AdminBookingController;
 
 use App\Middleware\AuthMiddleware;
 use App\Middleware\AdminMiddleware;
@@ -22,6 +23,7 @@ $router->get('/register', [AuthController::class, 'register']);
 
 $router->get('/booking', [BookingController::class, 'form']);
 $router->get('/booking/success', [BookingController::class, 'success']);
+$router->post('/booking', [BookingController::class, 'store']);
 
 $router->get('/admin', [AdminController::class, 'dashboard']);
 $router->get('/admin/pending', [AdminController::class, 'pending']);
@@ -40,12 +42,6 @@ $router->get('/admin/approved', function () {
     (new App\Controllers\AdminController())->approved();
 });
 
-$router->get('/logout', [AuthController::class, 'logout']);
-
-$router->post('/booking', [BookingController::class, 'store']);
-
-
-use App\Controllers\AdminBookingController;
 
 // --- ADMIN: LISTY REZERWACJI ---
 $router->get('/admin/bookings/pending', [AdminBookingController::class, 'pending']);
@@ -53,5 +49,5 @@ $router->get('/admin/bookings/accepted', [AdminBookingController::class, 'accept
 $router->get('/admin/bookings/rejected', [AdminBookingController::class, 'rejected']);
 
 // --- ADMIN: AKCJE ---
-$router->post('/admin/bookings/{id}/accept', [AdminBookingController::class, 'accept']);
-$router->post('/admin/bookings/{id}/reject', [AdminBookingController::class, 'reject']);
+$router->post('/admin/bookings/accept', [AdminBookingController::class, 'accept']);
+$router->post('/admin/bookings/reject', [AdminBookingController::class, 'reject']);
