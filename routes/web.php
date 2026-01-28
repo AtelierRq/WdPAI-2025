@@ -43,3 +43,15 @@ $router->get('/admin/approved', function () {
 $router->get('/logout', [AuthController::class, 'logout']);
 
 $router->post('/booking', [BookingController::class, 'store']);
+
+
+use App\Controllers\AdminBookingController;
+
+// --- ADMIN: LISTY REZERWACJI ---
+$router->get('/admin/bookings/pending', [AdminBookingController::class, 'pending']);
+$router->get('/admin/bookings/accepted', [AdminBookingController::class, 'accepted']);
+$router->get('/admin/bookings/rejected', [AdminBookingController::class, 'rejected']);
+
+// --- ADMIN: AKCJE ---
+$router->post('/admin/bookings/{id}/accept', [AdminBookingController::class, 'accept']);
+$router->post('/admin/bookings/{id}/reject', [AdminBookingController::class, 'reject']);

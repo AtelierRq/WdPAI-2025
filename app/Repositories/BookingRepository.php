@@ -89,4 +89,53 @@ class BookingRepository
             throw $e;
         }
     }
+
+    public function getByStatus(string $status): array
+    {
+        $sql = "
+            SELECT
+                b.id,
+                b.full_name,
+                b.email,
+                b.phone,
+                b.date_from,
+                b.date_to,
+                b.adults,
+                b.children,
+                b.infants,
+                b.breakfast,
+                b.notes,
+                b.total_price,
+                b.status,
+                b.created_at,
+                ARRAY_AGG(r.name ORDER BY r.name) AS rooms
+            FROM bookings b
+            JOIN booking_rooms br ON br.booking_id = b.id
+            JOIN rooms r ON r.id = br.room_id
+            WHERE b.status = :status
+            GROUP BY b.id
+            ORDER BY b.created_at DESC
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            'status' => $status,
+        ]);
+
+        return $stmt->fetchAll();
+    }
+
+    public function updateStatus(int $id, string $status): void
+    {
+        $stmt = $this->db->prepare("
+            UPDATE bookings
+            SET status = :status
+            WHERE id = :id
+        ");
+
+        $stmt->execute([
+            'id' => $id,
+            'status' => $status,
+        ]);
+    }
 }

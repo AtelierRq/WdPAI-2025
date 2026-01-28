@@ -1,6 +1,6 @@
 <section class="admin-bookings">
     <div class="container">
-        <h1>Oczekujące rezerwacje</h1>
+        <h1>Zaakceptowane rezerwacje</h1>
 
         <?php if (empty($bookings)): ?>
             <p>Brak oczekujących rezerwacji.</p>
@@ -48,15 +48,6 @@
                         </p>
                     </div>
 
-                    <div class="booking-actions">
-                        <form method="post" action="/admin/bookings/<?= $booking['id'] ?>/accept">
-                            <button class="btn-accept">Akceptuj</button>
-                        </form>
-
-                        <form method="post" action="/admin/bookings/<?= $booking['id'] ?>/reject">
-                            <button class="btn-reject">Odrzuć</button>
-                        </form>
-                    </div>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
