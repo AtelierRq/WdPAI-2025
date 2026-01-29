@@ -24,7 +24,8 @@
         <nav class="main-nav">
             <a href="/">O nas</a>
             <a href="/booking" class="btn-nav">Rezerwuj</a>
-            <a href="/login">Zaloguj</a>
+            <a href="/login">Logowanie</a>
+            <a href="/register">Rejestracja</a>
         </nav>
 
     </div>
