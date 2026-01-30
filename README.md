@@ -85,19 +85,83 @@ Technologie i narzędzia:
 
 PHP, HTML5, CSS, JavaScript (Fetch API - AJAX), PostgreSQL, Docker + docker-compose, Git, bez użycia frameworków
 
+
 Architektura aplikacji:
 
 Model - repozytoria
+
 View - Widoki PHP
+
 Controller - kontrolery
 
 Wyraźny podział na frontend i backend, routing, obsługa błędów.
 
+
 Użytkownicy i autoryzacja:
 
 System logowania i rejstracji
+
 Hasła haszowane i weryfikowane
+
 Obsługa sesji użytkowników
+
 Dwie role - user i admin
 
+Dynamiczny pasek nawigacji
 
+
+Rezerwacje (główna funkcjonalność):
+
+Formularz rezerwacji
+
+Automatyczne wyliczanie ceny
+
+Zapis rezerwacji w transakcji DB
+
+Statusy rezerwacji (pending, accpeted, rejected)
+
+
+Panel administratora:
+
+Widoki (Oczekujące rezerwacje, zaakceptowane, odrzucone)
+
+Akcje admina
+
+Aktualizacje statusu w bazie danych
+
+
+Panel użytkownika:
+
+Widok "Moje rezerwacje" i wszystkie szczegóły własnych rezerwacji
+
+Status rezerwacji
+
+
+Design i UX:
+
+Spójny styl graficzny
+
+Media queries - osobne zachowanie dla mobile/desktop
+
+Logo osadzone w pasku nawigacji
+
+Sekcja "O nas"
+
+Przewijanie do sekcji
+
+Ujednolicone formularze (rezerwacja, logowanie, rejestracja)
+
+
+Baza danych:
+
+Każde rodzaje relacji - jeden-do-wielu (jeden użytkownik może mieć wiele rezerwacji), wiele-do-wielu (jeden pokój może mieć wiele rezerwacji (w czasie)) oraz jeden-do-jednego (jeden użytkownik może mieć jeden profil). 
+
+Brak redundancji danych
+
+Klucze główne i obce + referencyjność
+
+Zastosowane: 2 widoki, 1 wyzwalacz, 1 funkcja, transakcje
+
+Pełny dump bazy jest w pliku debowyjar.sql
+
+Diagram ERD
