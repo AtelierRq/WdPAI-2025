@@ -24,8 +24,26 @@
         <nav class="main-nav">
             <a href="/">O nas</a>
             <a href="/booking" class="btn-nav">Rezerwuj</a>
-            <a href="/login">Logowanie</a>
-            <a href="/register">Rejestracja</a>
+
+            <?php if (!empty($_SESSION['user'])): ?>
+
+                <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
+                    <a href="/admin/bookings/pending">Panel admina</a>
+                <?php endif; ?>
+
+                <span class="nav-user">
+                    Zalogowany jako:
+                    <?= htmlspecialchars($_SESSION['user']['email']) ?>
+                </span>
+
+                <a href="/logout">Wyloguj</a>
+
+            <?php else: ?>
+
+                <a href="/login">Logowanie</a>
+                <a href="/register">Rejestracja</a>
+
+            <?php endif; ?>
         </nav>
 
     </div>

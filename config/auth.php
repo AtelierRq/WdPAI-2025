@@ -1,5 +1,5 @@
 <?php
-
+//NIE UZYWANY!
 return [
     [
         'email' => 'admin@debowyjar.pl',

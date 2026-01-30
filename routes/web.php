@@ -20,6 +20,7 @@ $router->post('/login', [AuthController::class, 'login']);
 $router->get('/logout', [AuthController::class, 'logout']);
 
 $router->get('/register', [AuthController::class, 'register']);
+$router->post('/register', [AuthController::class, 'store']);
 
 $router->get('/booking', [BookingController::class, 'form']);
 $router->get('/booking/success', [BookingController::class, 'success']);
