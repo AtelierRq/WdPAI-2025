@@ -18,14 +18,16 @@ body {
 }
 
 .site-header {
+    height: 80px;
     background: #fff;
     border-bottom: 1px solid #e5e5e5;
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 100;
 }
 
 .header-inner {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -97,16 +99,76 @@ body {
 .btn-nav {
     background: #f57c00;
     color: #fff !important;
-    border-radius: 4px;
+    border-radius: 8px;
     margin: 0.5rem;
     text-align: center;
 }
 
 /* HERO */
 .hero {
-    padding: 4rem 1rem;
+    padding: 6rem 1rem;
     text-align: center;
+    text-decoration: solid;
+    color: white;
+
+    background-image: url("/assets/images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    position: relative;
 }
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.hero a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    background: #f57c00;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+/* nakładka */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15); /* ← poziom przyciemnienia */
+    z-index: 1;
+}
+
+/* treść nad overlay */
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
+
 
 /* FOOTER */
 .site-footer {
@@ -393,4 +455,30 @@ body {
 button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+
+/* LOGO DEBOWY JAR */
+.logo {
+    position: relative;
+    z-index: 101;
+}
+
+.logo img {
+    height: 160px;    /* wielkość */
+    width: auto;
+    display: block;
+
+    position: absolute;
+    top: 50%;         /* start od środka navbaru */
+    left: 0px;
+
+    transform: translateY(-30%); /*wystaje */
+}
+
+/* DLA TEL */
+@media (max-width: 480px) {
+    .logo img {
+        height: 80px; /* było np. 64px */
+    }
 }

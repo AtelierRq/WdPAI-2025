@@ -14,7 +14,7 @@
     <div class="container header-inner">
 
         <a href="/" class="logo">
-            Dębowy Jar
+            <img src="/assets/images/debowyjar_logo.png" alt="Dębowy Jar">
         </a>
 
         <button class="menu-toggle" aria-label="Menu">
