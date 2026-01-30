@@ -5,7 +5,7 @@
     <a href="/booking" class="btn-nav">Zarezerwuj pobyt</a>
 </section>
 
-<section class="about">
+<section id="o-nas" class="about">
     <div class="container about-container">
 
         <div class="about-text">

@@ -22,7 +22,7 @@
         </button>
 
         <nav class="main-nav">
-            <a href="/">O nas</a>
+            <a href="/#o-nas">O nas</a>
             <a href="/booking" class="btn-nav">Rezerwuj</a>
 
             <?php if (!empty($_SESSION['user'])): ?>
