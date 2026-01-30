@@ -28,7 +28,15 @@
             <?php if (!empty($_SESSION['user'])): ?>
 
                 <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
-                    <a href="/admin/bookings/pending">Panel admina</a>
+                    <a href="/admin/bookings/pending">Oczekujące</a>
+                <?php endif; ?>
+
+                <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
+                    <a href="/admin/bookings/accepted">Zaakceptowane</a>
+                <?php endif; ?>
+
+                <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
+                    <a href="/admin/bookings/rejected">Odrzucone</a>
                 <?php endif; ?>
 
                 <?php if (($_SESSION['user']['role'] ?? '') === 'user'): ?>
