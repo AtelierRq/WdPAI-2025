@@ -81,12 +81,12 @@ Utworzony na stronie: https://dbdiagram.io/
 
 # Checklista z tym co udało się zrealizować:
 
-Technologie i narzędzia:
+### Technologie i narzędzia:
 
 PHP, HTML5, CSS, JavaScript (Fetch API - AJAX), PostgreSQL, Docker + docker-compose, Git, bez użycia frameworków
 
 
-Architektura aplikacji:
+### Architektura aplikacji:
 
 Model - repozytoria
 
@@ -97,7 +97,7 @@ Controller - kontrolery
 Wyraźny podział na frontend i backend, routing, obsługa błędów.
 
 
-Użytkownicy i autoryzacja:
+### Użytkownicy i autoryzacja:
 
 System logowania i rejstracji
 
@@ -110,7 +110,7 @@ Dwie role - user i admin
 Dynamiczny pasek nawigacji
 
 
-Rezerwacje (główna funkcjonalność):
+### Rezerwacje (główna funkcjonalność):
 
 Formularz rezerwacji
 
@@ -121,7 +121,7 @@ Zapis rezerwacji w transakcji DB
 Statusy rezerwacji (pending, accpeted, rejected)
 
 
-Panel administratora:
+### Panel administratora:
 
 Widoki (Oczekujące rezerwacje, zaakceptowane, odrzucone)
 
@@ -130,14 +130,14 @@ Akcje admina
 Aktualizacje statusu w bazie danych
 
 
-Panel użytkownika:
+### Panel użytkownika:
 
 Widok "Moje rezerwacje" i wszystkie szczegóły własnych rezerwacji
 
 Status rezerwacji
 
 
-Design i UX:
+### Design i UX:
 
 Spójny styl graficzny
 
@@ -152,7 +152,7 @@ Przewijanie do sekcji
 Ujednolicone formularze (rezerwacja, logowanie, rejestracja)
 
 
-Baza danych:
+### Baza danych:
 
 Każde rodzaje relacji - jeden-do-wielu (jeden użytkownik może mieć wiele rezerwacji), wiele-do-wielu (jeden pokój może mieć wiele rezerwacji (w czasie)) oraz jeden-do-jednego (jeden użytkownik może mieć jeden profil). 
 
