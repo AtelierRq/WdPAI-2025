@@ -1,5 +1,12 @@
-# WdPAI-2025
-This app is a booking app for the hostel, specifically the "Dębowy Jar" Tourist Settlement. The app allows guests to select a convenient date for their visit. After selecting and entering the necessary information, the owner receives a booking request and can accept or decline it. In addition to booking dates, the app also includes other information, such as information about the hostel, a photo gallery, attractions within the hostel and nearby attractions, places to visit in the area, news and events in the area, seasonal attractions, and more. The overall design is orange, white, and black, just like the current Dębowy Jar website.
+# Dębowy Jar Aplikacja
+
+Ta aplikacja służy do rezerwacji noclegów w hostelu, a konkretnie w Osadzie Turystycznej „Dębowy Jar”. Aplikacja pozwala gościom wybrać dogodny termin wizyty. Po wybraniu i wprowadzeniu niezbędnych informacji, właściciel otrzymuje prośbę o rezerwację, którą może zaakceptować lub odrzucić. Oprócz dat rezerwacji, aplikacja zawiera również inne informacje, takie jak informacje o hostelu oraz małą galerię zdjęć. Całość utrzymana jest w kolorystyce pomarańczowo-biało-czarnej.
 
 
-Opis ERD:
+# Baza Danych
+
+* Baza obsługuje trzy główne obszary aplikacji: użytkowników, rezerwacje, relacje rezerwacja-pokój.
+* Baza została wykonana zgodnie z zasadami normalizacji i standardu 3NF. 
+* Zawiera relacje typu jeden-do-wielu (jeden użytkownik może mieć wiele rezerwacji), wiele-do-wielu (jeden pokój może mieć wiele rezerwacji (w czasie)) oraz jeden-do-jednego (jeden użytkownik może mieć jeden profil). 
+* Dodałem 2 widoki z uwzględnieniem JOIN, wyzwalacz oraz funkcję. 
+* Operacje zapisu są w transakcjach, aby dane były spójne. Transakcje realizowane są na poziomie READ COMMITTED.
