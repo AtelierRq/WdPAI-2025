@@ -6,13 +6,13 @@
             <p>Brak oczekujących rezerwacji.</p>
         <?php else: ?>
             <?php foreach ($bookings as $booking): ?>
-                <div class="booking-card" data-id="<?= $booking['id'] ?>">
-                    <div class="booking-header">
+                <div class="reservation-card" data-id="<?= $booking['id'] ?>">
+                    <div class="reservation-header">
                         <strong><?= htmlspecialchars($booking['full_name']) ?></strong>
                         <span><?= htmlspecialchars($booking['email']) ?></span>
                     </div>
 
-                    <div class="booking-body">
+                    <div class="reservation-body">
                         <p><strong>Telefon:</strong> <?= htmlspecialchars($booking['phone']) ?></p>
                         <p><strong>Termin:</strong>
                             <?= $booking['date_from'] ?> →
@@ -42,13 +42,13 @@
                             </p>
                         <?php endif; ?>
 
-                        <p class="price">
+                        <p class="price-box">
                             <strong>Łączna cena:</strong>
                             <?= $booking['total_price'] ?> zł
                         </p>
                     </div>
 
-                    <div class="booking-actions">
+                    <div class="reservation-actions">
                         <button class="btn-accept" data-action="accept">Akceptuj</button>
 
                         <button class="btn-reject" data-action="reject">Odrzuć</button>
