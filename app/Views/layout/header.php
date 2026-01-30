@@ -43,8 +43,8 @@
                     <a href="/my-bookings">Moje rezerwacje</a>
                 <?php endif; ?>
 
-                <span class="nav-user">
-                    Zalogowany jako:
+                <span class="user-badge">
+                    Zalogowany:
                     <?= htmlspecialchars($_SESSION['user']['email']) ?>
                 </span>
 
