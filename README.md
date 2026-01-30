@@ -31,3 +31,36 @@ Ta aplikacja służy do rezerwacji noclegów w hostelu, a konkretnie w Osadzie T
 
 Utworzony na stronie: https://dbdiagram.io/
 <img width="1202" height="744" alt="image" src="https://github.com/user-attachments/assets/eb6b964b-d1fd-4713-832c-95083266d194" />
+
+
+# Diagram Warstwowy
+
+┌────────────────────────────┐
+│        WIDOKI (Views)       │
+│  HTML / PHP / CSS / JS      │
+└─────────────▲──────────────┘
+              │
+┌─────────────┴──────────────┐
+│     KONTROLERY (Controllers)│
+│  AuthController             │
+│  BookingController          │
+│  AdminBookingController     │
+└─────────────▲──────────────┘
+              │
+┌─────────────┴──────────────┐
+│     LOGIKA (Services)       │
+│  AuthService                │
+│  SessionService             │
+└─────────────▲──────────────┘
+              │
+┌─────────────┴──────────────┐
+│  DOSTĘP DO DANYCH           │
+│  (Repositories)             │
+│  BookingRepository          │
+│  UserRepository             │
+└─────────────▲──────────────┘
+              │
+┌─────────────┴──────────────┐
+│        BAZA DANYCH          │
+│        PostgreSQL           │
+└────────────────────────────┘
