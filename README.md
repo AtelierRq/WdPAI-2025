@@ -11,3 +11,6 @@ Ta aplikacja służy do rezerwacji noclegów w hostelu, a konkretnie w Osadzie T
 * Dodałem 2 widoki z uwzględnieniem JOIN, wyzwalacz oraz funkcję. 
 * Operacje zapisu są w transakcjach, aby dane były spójne. Transakcje realizowane są na poziomie READ COMMITTED.
 * dump bazy danych znajduje się w pliku "debowyjar.sql".
+
+# Diagram ERD
+<img width="1202" height="744" alt="image" src="https://github.com/user-attachments/assets/eb6b964b-d1fd-4713-832c-95083266d194" />
