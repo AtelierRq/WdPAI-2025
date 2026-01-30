@@ -14,7 +14,17 @@ class BookingController extends Controller
 
     public function success(): void
     {
-    $this->view('booking/success');
+        if (empty($_SESSION['booking_success'])) {
+            header('Location: /');
+            exit;
+        }
+
+        $data = $_SESSION['booking_success'];
+        unset($_SESSION['booking_success']);
+
+        $this->view('booking/success', [
+            'booking' => $data
+        ]);
     }
 
     public function store(): void
@@ -50,6 +60,8 @@ class BookingController extends Controller
 
         $repo = new BookingRepository();
         $repo->create($data);
+
+        $_SESSION['booking_success'] = $data;
 
         header('Location: /booking/success');
         exit;
