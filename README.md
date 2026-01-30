@@ -51,22 +51,31 @@ Utworzony na stronie: https://dbdiagram.io/
 # Scenariusz testowy aplikacji
 
 1. Rejestracja użytkownika (CREATE – users)
+   
    Użytkownik wchodzi na stronę główną, klika "Rejestracja", podaje dane (imie, nazwisko, email, haslo) i jego konto zostaje poprawnie utworzone w bazie danych.
-2. Logowanie użytkownika (READ – auth)
+3. Logowanie użytkownika (READ – auth)
+   
    Użytkownik przechodzi na stronę logowania, podaje swoje dane niezbędne do zalogowania i jeśli dane są poprawne to przechodzi do strony głównej jako użytkownik zalogowany. Pojawia się jego adres email na pasku nawigacji oraz ma on teraz dostęp do jego dokonanych rezerwacji.
-3. Próba dostępu do panelu admina (401 / 403)
+5. Próba dostępu do panelu admina (401 / 403)
+   
    Zalogowany użytkownik typu 'user' próbuje przejść na jakąś ze stron admina, np. /admin/bookings/pending, ale system zwraca 403 - brak dostępu.
-4. Złożenie rezerwacji (CREATE – bookings)
+7. Złożenie rezerwacji (CREATE – bookings)
+   
    Zalogowany użytkownik klika "Rezerwuj", wypełnia pełen formularz, jego rezerwacja zostaje zapisana w 'bookings' oraz jej status ustawiony na 'pending'. Na ekranie wyświetla się potwierdzenie rezerwacji.
-5. Widok „Moje rezerwacje” (READ)
+9. Widok „Moje rezerwacje” (READ)
+    
    Użytkownik przechodzi do zakładki "Moje rezerwacje" gdzie widoczne są rezerwacje tylko tego użytkownika oraz ich status.
-6. Logowanie administratora
+11. Logowanie administratora
+    
    Administrator loguje się na swoje konto z rolą 'admin'. Widzi dodatkowe sekcje na pasku nawigacji takie jak: Oczekujące, Zaakceptowane, Odrzucone.
-7. Zarządzanie rezerwacjami (UPDATE – admin)
+13. Zarządzanie rezerwacjami (UPDATE – admin)
+
    Administrator wchodzi w "Oczekujące rezerwacje" i wybiera "Akceptuj" lub "Odrzuć", po czym zmienia się status danej rezerwacji na "accpeted" lub "rejected". Rezerwacja taka znika z "Oczekujące" i znajduje się teraz w odpowiedniej zakładce.
-8. Widoki admina (READ + JOIN)
+14. Widoki admina (READ + JOIN)
+
    Admin przechodzi między zakładkami w celu weryfikacji czy wszyskie rezerwacje są tam gdzie powinny. Dane są pobierane z wielu tabel.
-9. Wylogowanie
+15. Wylogowanie
+
    Admin klika "Wyloguj", sesja zostaje usunięta, użytkownik wraca do stanu niezalogowanego oraz powracają przyciski "Logowanie" oraz "Rejestracja" na pasku nawigacji
    
 
