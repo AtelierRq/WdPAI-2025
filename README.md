@@ -35,32 +35,4 @@ Utworzony na stronie: https://dbdiagram.io/
 
 # Diagram Warstwowy
 
-┌────────────────────────────┐
-│        WIDOKI (Views)       │
-│  HTML / PHP / CSS / JS      │
-└─────────────▲──────────────┘
-              │
-┌─────────────┴──────────────┐
-│     KONTROLERY (Controllers)│
-│  AuthController             │
-│  BookingController          │
-│  AdminBookingController     │
-└─────────────▲──────────────┘
-              │
-┌─────────────┴──────────────┐
-│     LOGIKA (Services)       │
-│  AuthService                │
-│  SessionService             │
-└─────────────▲──────────────┘
-              │
-┌─────────────┴──────────────┐
-│  DOSTĘP DO DANYCH           │
-│  (Repositories)             │
-│  BookingRepository          │
-│  UserRepository             │
-└─────────────▲──────────────┘
-              │
-┌─────────────┴──────────────┐
-│        BAZA DANYCH          │
-│        PostgreSQL           │
-└────────────────────────────┘
+<img width="255" height="703" alt="image" src="https://github.com/user-attachments/assets/a4940e15-5558-49de-9474-dfe5db32ba0e" />
