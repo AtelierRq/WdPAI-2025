@@ -33,7 +33,7 @@
             <img src="/assets/images/about1.jpg" alt="Osada Turystyczna Dębowy Jar">
             <img src="/assets/images/about2.jpg" alt="Pokoje w Dębowym Jarze">
             <img src="/assets/images/about3.jpg" alt="Okolica Osady Dębowy Jar">
-            <img src="/assets/images/about3.jpg" alt="Okolica Osady Dębowy Jar">
+            <img src="/assets/images/about4.jpg" alt="Okolica Osady Dębowy Jar">
         </div>
 
     </div>

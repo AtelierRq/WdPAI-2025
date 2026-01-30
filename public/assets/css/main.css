@@ -66,6 +66,11 @@ body {
     text-decoration: none;
     color: #222;
     border-bottom: 1px solid #f0f0f0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .main-nav.active {
@@ -102,6 +107,11 @@ body {
     border-radius: 8px;
     margin: 0.5rem;
     text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.btn-nav:hover {
+    background: #ef6c00;
 }
 
 /* HERO */
