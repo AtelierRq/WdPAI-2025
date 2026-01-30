@@ -20,7 +20,7 @@ class BookingController extends Controller
     public function store(): void
     {
         $data = [
-            'user_id'  => null, // na razie gość
+            'user_id' => $_SESSION['user']['id'] ?? null,
             'fullName' => trim($_POST['fullName'] ?? ''),
             'email'    => trim($_POST['email'] ?? ''),
             'phone'    => trim($_POST['phone'] ?? ''),
@@ -53,5 +53,22 @@ class BookingController extends Controller
 
         header('Location: /booking/success');
         exit;
+    }
+
+    public function myBookings(): void
+    {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        $userId = $_SESSION['user']['id'];
+
+        $repository = new BookingRepository();
+        $bookings = $repository->getByUserId($userId);
+
+        $this->view('booking/my-bookings', [
+            'bookings' => $bookings
+        ]);
     }
 }

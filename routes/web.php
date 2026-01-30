@@ -25,6 +25,7 @@ $router->post('/register', [AuthController::class, 'store']);
 $router->get('/booking', [BookingController::class, 'form']);
 $router->get('/booking/success', [BookingController::class, 'success']);
 $router->post('/booking', [BookingController::class, 'store']);
+$router->get('/my-bookings', [BookingController::class, 'myBookings']);
 
 $router->get('/admin', [AdminController::class, 'dashboard']);
 $router->get('/admin/pending', [AdminController::class, 'pending']);

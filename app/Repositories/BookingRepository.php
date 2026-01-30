@@ -138,4 +138,24 @@ class BookingRepository
             'status' => $status,
         ]);
     }
+
+    public function getByUserId(int $userId): array
+    {
+        $stmt = $this->db->prepare("
+            SELECT b.*, 
+                STRING_AGG(r.name, ', ') AS rooms
+            FROM bookings b
+            LEFT JOIN booking_rooms br ON br.booking_id = b.id
+            LEFT JOIN rooms r ON r.id = br.room_id
+            WHERE b.user_id = :user_id
+            GROUP BY b.id
+            ORDER BY b.created_at DESC
+        ");
+
+        $stmt->execute([
+            'user_id' => $userId
+        ]);
+
+        return $stmt->fetchAll();
+    }
 }

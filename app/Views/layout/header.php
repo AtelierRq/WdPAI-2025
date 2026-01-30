@@ -31,6 +31,10 @@
                     <a href="/admin/bookings/pending">Panel admina</a>
                 <?php endif; ?>
 
+                <?php if (($_SESSION['user']['role'] ?? '') === 'user'): ?>
+                    <a href="/my-bookings">Moje rezerwacje</a>
+                <?php endif; ?>
+
                 <span class="nav-user">
                     Zalogowany jako:
                     <?= htmlspecialchars($_SESSION['user']['email']) ?>
