@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <button type="button" id="addRoomBtn">+ Dodaj kolejny pokój</button>
+            <button class="main-nav" type="button" id="addRoomBtn">+ Dodaj kolejny pokój</button>
 
             <!-- ŚNIADANIE -->
             <div class="form-group">

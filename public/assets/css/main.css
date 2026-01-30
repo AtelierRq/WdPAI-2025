@@ -604,6 +604,7 @@ html {
     font-size: 0.9rem;
 }
 
+/*PRZYCISK PODSTAOWOWY */
 .btn-primary {
     background: #f57c00;
     color: #fff;
@@ -622,6 +623,7 @@ html {
     width: 100%;
 }
 
+/* zalogowany jako... */
 .user-badge {
     background: #f5f5f5;
     color: #444;
@@ -632,4 +634,43 @@ html {
     white-space: nowrap;
     font-weight: bold;
 
+}
+
+/* wybór pokoju formularz */
+.room-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    appearance: none;              /* usuwa domyślny wygląd */
+    background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%23666' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.room-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* checkbox */
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+}
+
+/* POWIĘKSZ CHECKBOX */
+.form-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #f57c00; /* kolor jak przycisk */
+    cursor: pointer;
 }
