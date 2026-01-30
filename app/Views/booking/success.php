@@ -5,7 +5,7 @@
 
         <h1>Dziękujemy za rezerwację!</h1>
         <p class="success-text">
-            Twoja rezerwacja została pomyślnie złożona.
+            Rezerwacja została pomyślnie złożona.
         </p>
 
         <div class="success-card">
