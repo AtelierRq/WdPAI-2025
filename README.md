@@ -36,3 +36,17 @@ Utworzony na stronie: https://dbdiagram.io/
 # Diagram Warstwowy
 
 <img width="255" height="703" alt="image" src="https://github.com/user-attachments/assets/a4940e15-5558-49de-9474-dfe5db32ba0e" />
+
+# Instrukcja uruchomienia aplikacji (Docker)
+
+1. Trzeba zweryfikować czy na pewno znajduje się w projekcie plik .env z poprawnymi danymi.
+2. Aby uruchomić aplikację wraz z bazą danych (baza danych PostgreSQL (wewnątrz Dockera)), w katalogu głównym projektu wykonujemy:
+   * docker-compose up -d
+3. Następnie mamy na naszym localhoście działa aplikacja: http://localhost:8080
+4. W celu zatrzymania aplikacji:
+   * docker-compose down
+  
+* Konfiguracja znajduje się w docker-compose.yaml
+
+# Scenariusz testowy aplikacji
+
