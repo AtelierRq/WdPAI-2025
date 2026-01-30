@@ -13,4 +13,6 @@ Ta aplikacja służy do rezerwacji noclegów w hostelu, a konkretnie w Osadzie T
 * dump bazy danych znajduje się w pliku "debowyjar.sql".
 
 # Diagram ERD
+
+Utworzony na stronie: https://dbdiagram.io/
 <img width="1202" height="744" alt="image" src="https://github.com/user-attachments/assets/eb6b964b-d1fd-4713-832c-95083266d194" />
