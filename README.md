@@ -5,4 +5,8 @@ Ta aplikacja służy do rezerwacji noclegów w hostelu, a konkretnie w Osadzie T
 
 # Baza Danych
 
-Baza obsługuje trzy główne obszary aplikacji: użytkowników, rezerwacje, relacje rezerwacja-pokój
+Baza obsługuje trzy główne obszary aplikacji: użytkowników, rezerwacje, relacje rezerwacja-pokój.
+Baza została wykonana zgodnie z zasadami normalizacji i standardu 3NF. 
+Zawiera relacje typu jeden-do-wielu (jeden użytkownik może mieć wiele rezerwacji), wiele-do-wielu (jeden pokój może mieć wiele rezerwacji (w czasie)) oraz jeden-do-jednego (jeden użytkownik może mieć jeden profil). 
+Dodałem 2 widoki z uwzględnieniem JOIN, wyzwalacz oraz funkcję. 
+Operacje zapisu są w transakcjach, aby dane były spójne. Transakcje realizowane są na poziomie READ COMMITTED.
