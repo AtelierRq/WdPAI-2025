@@ -82,9 +82,11 @@ Utworzony na stronie: https://dbdiagram.io/
 # Checklista z tym co udało się zrealizować:
 
 Technologie i narzędzia:
+
 PHP, HTML5, CSS, JavaScript (Fetch API - AJAX), PostgreSQL, Docker + docker-compose, Git, bez użycia frameworków
 
 Architektura aplikacji:
+
 Model - repozytoria
 View - Widoki PHP
 Controller - kontrolery
@@ -92,7 +94,10 @@ Controller - kontrolery
 Wyraźny podział na frontend i backend, routing, obsługa błędów.
 
 Użytkownicy i autoryzacja:
+
 System logowania i rejstracji
 Hasła haszowane i weryfikowane
 Obsługa sesji użytkowników
 Dwie role - user i admin
+
+
