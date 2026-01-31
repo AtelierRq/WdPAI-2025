@@ -2,12 +2,13 @@ document.addEventListener('click', async e => {
     const btn = e.target.closest('[data-action]');
     if (!btn) return;
 
-    const card = btn.closest('.booking-card');
+    const card = btn.closest('.reservation-card');
     const id = card.dataset.id;
     const action = btn.dataset.action;
 
     if (!id || !action) return;
 
+    //uzycie fetch API
     try {
         const res = await fetch(`/admin/bookings/${action}`, {
             method: 'POST',
